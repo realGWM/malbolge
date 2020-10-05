@@ -14,7 +14,7 @@ pub fn add(first: Tryte, second: Tryte) -> Tryte {
 pub fn move_right(mut tryte: Tryte) -> Tryte {
     let last = tryte % 3;
     tryte /= 3;
-    tryte += Tryte::pow(3, TRITS - 1) * last;
+    tryte += Tryte::pow(3, TRITS as u32 - 1) * last;
     tryte
 }
 
