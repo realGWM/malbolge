@@ -65,8 +65,8 @@ fn main() {
                 }
             }
             mem[c as usize] = trits::encrypt(mem[c as usize]);
-            c = c + 1;
-            d = d + 1;
+            c = trits::add(c, 1);
+            d = trits::add(d, 1);
         }
         println!("\n{} {} {}!", "Program has been finished in".green(), counter.to_string().blue(), "cycles".blue());
     } else {
