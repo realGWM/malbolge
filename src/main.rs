@@ -68,7 +68,7 @@ fn main() {
             c = trits::add(c, 1);
             d = trits::add(d, 1);
         }
-        println!("\n{} {} {}!", "Program has been finished in".green(), counter.to_string().blue(), "cycles".blue());
+        println!("\n{} {} {}!", "Program has been finished in".green(), counter.to_string().blue(), "cycles".green());
     } else {
         println!("{}!", "Program has been terminated".red())
     }
