@@ -25,8 +25,10 @@ fn main() {
         let mut c: trits::Tryte = 0;
         let mut d: trits::Tryte = 0;
         println!("{}!", "Ready".green());
+        let mut counter: u32 = 0;
         let mut input = io::stdin().bytes().into_iter();
         loop {
+            counter += 1;
             let instruction = trits::add(c,  mem[c as usize]) % 94;
             match instruction {
                 4 => {
@@ -66,7 +68,7 @@ fn main() {
             c = c + 1;
             d = d + 1;
         }
-        println!("\n{}!", "Program has been finished".green());
+        println!("\n{} {} {}!", "Program has been finished in".green(), counter.to_string().blue(), "cycles".blue());
     } else {
         println!("{}!", "Program has been terminated".red())
     }
@@ -86,14 +88,14 @@ fn process_args() -> Option<Box<dyn Read>> {
             None
         } else {
             let file_name = arg;
-            println!("{} '{}' {}...", "Using file".green(), file_name, "as a source".green());
+            println!("{} '{}' {}...", "Using file".green(), file_name.blue(), "as a source".green());
             let file = match File::open(file_name) {
                 Ok(file) => {
                     println!("{}...", "File has been opened successfully".green());
                     file
                 },
                 Err(err) => {
-                    println!("{}: '{}'!", "Failed to open the file with error".red(), err.to_string());
+                    println!("{}: '{}'!", "Failed to open the file with error".red(), err.to_string().blue());
                     return None;
                 }
             };
@@ -119,7 +121,7 @@ fn init_mem<T: Read>(src: &mut T) -> Result<[trits::Tryte; trits::MAX as usize],
         let c: char = u.into();
         if !c.is_whitespace() {
             if idx >= trits::MAX as usize {
-                return Err(format!("{} {} {}!", "There are more than".red(), trits::MAX.to_string(), "instructions in the source".red()));
+                return Err(format!("{} {} {}!", "There are more than".red(), trits::MAX.to_string().blue(), "instructions in the source".red()));
             }
             mem[idx] = u as trits::Tryte;
             idx += 1;
@@ -128,7 +130,7 @@ fn init_mem<T: Read>(src: &mut T) -> Result<[trits::Tryte; trits::MAX as usize],
     if idx < 2 {
         return Err(format!("{} {} {}!", "There are less than".red(), 2, "instructions in the source".red()));
     }
-    println!("{}...", "Instructions have been loaded into memory successfully".green());
+    println!("{} {}...", idx.to_string().blue(), "Instructions have been loaded into memory successfully".green());
     for idx in idx..trits::MAX as usize {
         mem[idx] = trits::crazy(mem[idx-2], mem[idx-1]);
     }
