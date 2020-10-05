@@ -112,7 +112,7 @@ fn init_mem<T: Read>(src: &mut T) -> Result<[trits::Tryte; trits::MAX as usize],
     let mut buf: Vec<u8> = Vec::new();
     println!("{}...", "Reading instructions from the source".green());
     if let Err(err) = src.read_to_end(&mut buf) {
-        return Err(format!("{}: '{}'", "Failed to read source".red(), err.to_string()));
+        return Err(format!("{}: '{}'", "Failed to read source".red(), err.to_string().blue()));
     }
     println!("{}...", "Instructions have been read successfully".green());
     let mut mem: [trits::Tryte; trits::MAX as usize] = [0; trits::MAX as usize];
