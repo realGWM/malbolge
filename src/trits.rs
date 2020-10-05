@@ -1,10 +1,11 @@
 //If singular is trit, then plural is tryte.
-//Each tryte is 10 trits long.
 pub type Tryte = u32;
+
+//Each tryte is 10 trits long.
+pub const TRITS: Tryte = 10;
 
 pub const MAX: Tryte = 59049;
 pub const EOF: Tryte = 59048;
-pub const TRITS: Tryte = 10;
 
 pub fn add(first: Tryte, second: Tryte) -> Tryte {
     (first + second) % MAX
@@ -13,7 +14,7 @@ pub fn add(first: Tryte, second: Tryte) -> Tryte {
 pub fn move_right(mut tryte: Tryte) -> Tryte {
     let last = tryte % 3;
     tryte /= 3;
-    tryte += Tryte::pow(3, 9) * last;
+    tryte += Tryte::pow(3, TRITS - 1) * last;
     tryte
 }
 
