@@ -35,7 +35,7 @@ pub fn crazy(mut first: Tryte, mut second: Tryte) -> Tryte {
             (2, 0) => 2,
             (2, 1) => 2,
             (2, 2) => 1,
-            _ => panic!(format!("Impossible remainders"))
+            _ => panic!("Impossible remainders")
         };
         res += crz * Tryte::pow(3, pow as u32);
     }
@@ -138,7 +138,7 @@ pub fn encrypt(tryte: Tryte) -> Tryte {
         91 => 106,
         92 => 115,
         93 => 98,
-         _ => panic!(format!("Impossible remainder"))
+         _ => panic!("Impossible remainder")
     };
     result
 }
