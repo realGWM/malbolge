@@ -4,6 +4,7 @@ pub type Tryte = u32;
 //Each tryte is 10 trits long.
 pub const TRITS: Tryte = 10;
 
+//TODO: to be replaced with `Tryte::pow(3, 10)` when pow becomes `const fn` in stable edition of Rust
 pub const MAX: Tryte = 59049;
 pub const EOF: Tryte = 59048;
 
